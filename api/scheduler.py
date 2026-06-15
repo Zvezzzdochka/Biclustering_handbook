@@ -25,7 +25,7 @@ def start_bot():
 
     # ДЛЯ ТЕСТИРОВАНИЯ раскомментить
     # Использовать timezone.now() вместо datetime.now() для избежания конфликтов
-    run_time = timezone.now() + timedelta(seconds=5)
-    scheduler.add_job(fetch_biclustering_articles, 'date', run_date=run_time)
+    # run_time = timezone.now() + timedelta(seconds=5)
+    # scheduler.add_job(fetch_biclustering_articles, 'date', run_date=run_time)
 
     scheduler.start()
