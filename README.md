@@ -36,87 +36,90 @@ cd Biclustering_handbook
 
 - GRANT ALL PRIVILEGES ON DATABASE biclustering_db TO db_user;
 
+
 3. Настройка серверной части
-Перейдите в папку проекта:
+
+- Перейдите в папку проекта:
+
 - Создайте и активируйте виртуальное окружение:
 
-python -m venv venv
+- python -m venv venv
 
-venv\Scripts\activate
+- venv\Scripts\activate
 
 - Установите зависимости:
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 - Настройте переменные окружения:
 
-Создайте файл .env в корневой директории проекта (рядом с файлом settings.py или manage.py) и добавьте в него настройки вашей БД:
+- Создайте файл .env в корневой директории проекта (рядом с файлом settings.py или manage.py) и добавьте в него настройки вашей БД:
 
-SECRET_KEY=your_django_secret_key
+- SECRET_KEY=your_django_secret_key
 
-DEBUG=True
+- DEBUG=True
 
-DB_NAME=biclustering_db
+- DB_NAME=biclustering_db
 
-DB_USER=db_user
+- DB_USER=db_user
 
-DB_PASSWORD=your_password
+- DB_PASSWORD=your_password
 
-DB_HOST=localhost
+- DB_HOST=localhost
 
-DB_PORT=5432
+- DB_PORT=5432
 
 - Примените миграции базы данных:
 
-python manage.py migrate
+- python manage.py migrate
 
 - Загрузите начальные данные (уроки, тесты, вопросы):
 
-В корне проекта подготовлен файл script_loading_data.sql с готовым образовательным контентом.
+- В корне проекта подготовлен файл script_loading_data.sql с готовым образовательным контентом.
 
-Загрузите его в базу данных через терминал с помощью утилиты psql:
+- Загрузите его в базу данных через терминал с помощью утилиты psql:
 
-psql -U db_user -d biclustering_db -f script_loading_data.sql
+- psql -U db_user -d biclustering_db -f script_loading_data.sql
 
-Либо просто откройте файл script_loading_data.sql в вашем менеджере баз данных, например в pgAdmin или DBeaver,
+- Либо просто откройте файл script_loading_data.sql в вашем менеджере баз данных, например в pgAdmin или DBeaver,
 подключитесь к базе biclustering_db и нажмите кнопку выполнения скрипта
 
 - Создайте суперпользователя (администратора):
-python manage.py createsuperuser
+- python manage.py createsuperuser
 
 - Запустите сервер разработки:
 
-python manage.py runserver
+- python manage.py runserver
 
-API бэкенда будет доступно по адресу: http://127.0.0.1:8000/
+- API бэкенда будет доступно по адресу: http://127.0.0.1:8000/
 
 4. Настройка клиентской части
 
-Откройте новое окно терминала и перейдите в папку frontend:
+- Откройте новое окно терминала и перейдите в папку frontend:
 
-cd frontend
+- cd frontend
 
 - Установите npm-зависимости:
 
-npm install
+- npm install
 
 - Настройте подключение к API:
 
-Убедитесь, что в файле конфигурации или .env внутри фронтенда указан правильный URL вашего бэкенда.
+- Убедитесь, что в файле конфигурации или .env внутри фронтенда указан правильный URL вашего бэкенда.
 
-.env во фронтенде:
+- .env во фронтенде:
 
-REACT_APP_API_URL=http://127.0.0.1:8000/api/
+- REACT_APP_API_URL=http://127.0.0.1:8000/api/
 
 - Запустите React-приложение:
 
-npm start
+- npm start
 
-Сайт откроется в браузере по адресу: http://localhost:3000/
+- Сайт откроется в браузере по адресу: http://localhost:3000/
 
 5. Работа с поисковым ботом-загрузчиком научных статей
 
-В проект встроен автономный бот-парсер, работающий на базе APScheduler. В конфигурации по умолчанию он запускается автоматически каждую неделю в фоновом режиме вместе с процессом Django.
+- В проект встроен автономный бот-парсер, работающий на базе APScheduler. В конфигурации по умолчанию он запускается автоматически каждую неделю в фоновом режиме вместе с процессом Django.
 
 - Если вы хотите принудительно запустить сбор статей для тестирования прямо сейчас:
 
